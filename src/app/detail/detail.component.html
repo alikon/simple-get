@@ -1,0 +1,14 @@
+<a routerLink="/">Go to list</a><br><br>
+
+<div class="detail" *ngIf="!showSpinner && user; else loading">
+  <img class="avatar" [src]="user.avatar">
+  <div class="info">
+    <h1 class="title">{{ user.first_name + ' ' + user.last_name }}</h1>
+    <p class="description">
+      {{ user.email }}
+    </p>
+  </div>
+</div>
+<ng-template #loading>
+    Loading...
+</ng-template>

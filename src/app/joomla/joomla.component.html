@@ -3,9 +3,9 @@
 <h1>joomla</h1>
 <ul class="list" *ngIf="!showSpinner && users; else loading">
   <li class="list-item" *ngFor="let user of users; let i = index">
-    <a class="list-title" routerLink="/detail/{{ user.id }}">
-    {{ i+1 }}-) {{ user.first_name + ' ' + user.last_name }}</a>
-    <p class="list-description">{{ user.email }}</p>
+    <a class="list-title" routerLink="/juserdetail/{{ user.id }}">
+    {{ i+1 }}-) {{ user.attributes.username + ' ' + user.attributes.name }}</a>
+    <p class="list-description">{{ user.attributes.email }}</p>
   </li>
 </ul>
 <ng-template #loading>

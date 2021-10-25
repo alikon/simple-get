@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { JoomlaComponent } from './joomla/joomla.component';
+import { JuserDetailComponent } from './juser-detail/juser-detail.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'detail/:id', component: DetailComponent
+  },
+  {
+    path: 'juserdetail/:id', component: JuserDetailComponent
   }
 ];
 

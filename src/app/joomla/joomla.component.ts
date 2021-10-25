@@ -23,7 +23,7 @@ export class JoomlaComponent implements OnInit {
   getUsers() {
     this.userService.getUsers()
     .subscribe((res: any) => {
-      const newRes = res.data.concat(res.data);
+      const newRes = res.data;
       this.users = newRes;
       this.showSpinner = false;
     });

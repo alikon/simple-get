@@ -11,13 +11,15 @@ import { DetailComponent } from './detail/detail.component';
 import { HttpClientModule } from "@angular/common/http";
 import { UserService } from './services/user.service';
 import { JoomlaComponent } from './joomla/joomla.component';
+import { JuserDetailComponent } from './juser-detail/juser-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DetailComponent,
-    JoomlaComponent
+    JoomlaComponent,
+    JuserDetailComponent
   ],
   imports: [
     BrowserModule,

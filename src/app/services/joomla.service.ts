@@ -5,27 +5,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class JoomlaService {
-   token ='Bearer c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA='
+   token ='c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA='
+   httpOptions = {
+    headers: new HttpHeaders({ 
+      'X-Joomla-Token': this.token,
+      'Content-Type': 'application/json',
+    })
+  };
   constructor(
     @Inject('joomlaUrl') private joomlaUrl,
     private http: HttpClient
   ) { }
 
   getUsers() {
-    const httpOptions = {
-      headers: new HttpHeaders({ 
-        'Access-Control-Allow-Origin': '*',
-        'Authorization':this.token,
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-      })
-    };
-
-    return this.http.get(`${this.joomlaUrl}`, httpOptions);
+    return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
   }
 
   getUser(id) {
-    return this.http.get(`${this.joomlaUrl}/users/${id}?delay=1`);
+    return this.http.get(`${this.joomlaUrl}/${id}`, this.httpOptions);
   }
 
 }

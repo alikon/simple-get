@@ -28,7 +28,7 @@ import { JuserDetailComponent } from './juser-detail/juser-detail.component';
     HttpClientModule
   ],
   providers: [
-    { provide: 'apiUrl', useValue: 'https://reqres.in/api' },
+    { provide: 'apiUrl', useValue: 'http://localhost/cloud/api/index.php/v1/content/articles' },
     { provide: 'joomlaUrl', useValue: 'http://localhost/cloud/api/index.php/v1/users' },
   ],
   bootstrap: [AppComponent]

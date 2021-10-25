@@ -1,10 +1,10 @@
-<a routerLink="/joomla">Go to joomla list</a><br><br>
-<h1>Users</h1>
+<a routerLink="/joomla">Go to joomla user list</a><br><br>
+<h1>Home</h1>
 <ul class="list" *ngIf="!showSpinner && users; else loading">
   <li class="list-item" *ngFor="let user of users; let i = index">
     <a class="list-title" routerLink="/detail/{{ user.id }}">
-    {{ i+1 }}-) {{ user.first_name + ' ' + user.last_name }}</a>
-    <p class="list-description">{{ user.email }}</p>
+    {{ i+1 }}-) {{ user.attributes.id + ' ' + user.attributes.title }}</a>
+    <p class="list-description">{{ user.text }}</p>
   </li>
 </ul>
 <ng-template #loading>

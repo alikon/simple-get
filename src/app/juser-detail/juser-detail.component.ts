@@ -13,26 +13,28 @@ export class JuserDetailComponent implements OnInit {
   userId;
   user;
 
-  constructor( private userService: JoomlaService,
+  constructor(
+    private userService: JoomlaService,
     private activatedRoute: ActivatedRoute
-    ) { }
+  ) { }
 
-    ngOnInit() {
-      this.userId = this.activatedRoute.snapshot.paramMap.get('id');
-      if (this.userId) {
-        this.getDetail();
-      }
+  ngOnInit() {
+    this.userId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.userId) {
+      this.getDetail();
     }
-  
-    getDetail() {
-      this.userService.getUser(this.userId)
-      .subscribe((res: any) => {
-        this.user = res.data;
-        this.showSpinner = false;
-        console.log(this.user);
-      }, (err: any) => {
-        console.log(err);
-      });
-    }
+  }
 
+  getDetail() {
+    this.userService.getUser(this.userId)
+    .subscribe((res: any) => {
+      this.user = res.data;
+      this.showSpinner = false;
+      let a  = JSON.parse( this.user.attributes.mediafielduser)
+      this.user.attributes.mediafielduser = 'http://dev4.loc/'+ a.imagefile.split('#', 1)
+      console.log(this.user.attributes.mediafielduser);
+    }, (err: any) => {
+      console.log(err);
+    });
+  }
 }

@@ -5,9 +5,9 @@
  <!-- <img class="avatar" [src]="user.avatar">-->
   <div class="info">
     <h1 class="title">{{ user.attributes.id + ' ' + user.attributes.title }}</h1>
-    <p class="description">
-      {{ user.attributes.text }}
-    </p>
+    
+      <div [innerHTML]="user.attributes.text"></div>
+    
   </div>
 </div>
 <ng-template #loading>

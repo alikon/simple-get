@@ -1,12 +1,11 @@
-<p>juser-detail works!</p>
-<a routerLink="/">Go to list</a><br><br>
+<a routerLink="/joomla">Go to list</a><br><br>
 
 <div class="detail" *ngIf="!showSpinner && user; else loading">
- <!-- <img class="avatar" [src]="user.avatar">-->
+  <img class="avatar" [src]="user.attributes.mediafielduser">
   <div class="info">
-    <h1 class="title">{{ user.attributes.username + ' ' + user.attributes.name }}</h1>
+    <h1 class="title">{{ user.attributes.username + ' ' + user.attributes.name}}</h1>
     <p class="description">
-      {{ user.attributes.email }}
+      {{user.attributes.email }}
     </p>
   </div>
 </div>

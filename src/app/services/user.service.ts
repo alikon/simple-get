@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  getUsers() {
+  getUsers() : Observable<any>  {
     return this.http.get(`${this.apiUrl}`, this.httpOptions);
   }
 
-  getUser(id) {
+  getUser(id) : Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 

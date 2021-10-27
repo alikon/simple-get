@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class JoomlaService {
     private http: HttpClient
   ) { }
 
-  getUsers() {
+  getUsers() : Observable<any> {
     return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
   }
 
-  getUser(id) {
+  getUser(id) : Observable<any> {
     return this.http.get(`${this.joomlaUrl}/${id}`, this.httpOptions);
   }
 

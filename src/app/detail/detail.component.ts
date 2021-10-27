@@ -31,8 +31,7 @@ export class DetailComponent implements OnInit {
       this.user = res.data;
       this.showSpinner = false;
       console.log(this.user);
-    }, (err: any) => {
-      console.log(err);
+    
     });
   }
 

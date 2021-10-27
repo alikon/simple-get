@@ -10,35 +10,35 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 //import { UserService } from './services/user.service';
 import { JoomlaComponent } from './joomla/joomla.component';
 import { JuserDetailComponent } from './juser-detail/juser-detail.component';
-import { AppHttpInterceptor } from './interceptors/resterror-interceptor';
+//import { AppHttpInterceptor } from './interceptors/resterror-interceptor';
 import { MessageService } from './services/message.service';
 import { MessagesComponent } from './messages/messages.component';
+import { LoggingInterceptor } from './interceptors/logging-interceptor';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DetailComponent,
-    JoomlaComponent,
-    JuserDetailComponent,
-    MessagesComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [
-    { provide: 'apiUrl', useValue: 'http://localhost/cloud/api/index.php/v1/content/articles' },
-    { provide: 'joomlaUrl', useValue: 'http://localhost/cloud/api/index.php/v1/users' },
-   
-    {
-      provide : HTTP_INTERCEPTORS,
-      useClass : AppHttpInterceptor,
-      multi : true
-    },
-    MessageService
-   ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		DetailComponent,
+		JoomlaComponent,
+		JuserDetailComponent,
+		MessagesComponent
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		AppRoutingModule,
+		HttpClientModule
+	],
+	providers: [
+		{ provide: 'apiUrl', useValue: 'http://localhost/cloud/api/index.php/v1/content/articles' },
+		{ provide: 'joomlaUrl', useValue: 'http://localhost/cloud/api/index.php/v1/users' },
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: LoggingInterceptor,
+			multi: true
+		},
+		MessageService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

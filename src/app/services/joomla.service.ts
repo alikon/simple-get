@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class JoomlaService {
-   token ='c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA='
-   httpOptions = {
-    headers: new HttpHeaders({ 
+  token = 'c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA='
+  httpOptions = {
+    headers: new HttpHeaders({
       'X-Joomla-Token': this.token,
       'Content-Type': 'application/json',
     })
@@ -18,12 +18,12 @@ export class JoomlaService {
     private http: HttpClient
   ) { }
 
-  getUsers() : Observable<any> {
-    return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
+  getUsers(): Observable<any> {
+    return this.http.get(`${this.joomlaUrl}xxx`, this.httpOptions);
   }
 
-  getUser(id) : Observable<any> {
-    return this.http.get(`${this.joomlaUrl}/${id}`, this.httpOptions);
+  getUser(id): Observable<any> {
+    return this.http.get(`${this.joomlaUrl}/${id}xxx`, this.httpOptions);
   }
 
 }

@@ -32,6 +32,7 @@ export class LoggingInterceptor implements HttpInterceptor {
              ${ok} in ${elapsed} ms. ${req.params}`;
              
           this.messenger.add(msg);
+          //window.alert(ok);
         }),
       
       );

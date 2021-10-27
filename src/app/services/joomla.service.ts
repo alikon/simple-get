@@ -19,11 +19,11 @@ export class JoomlaService {
   ) { }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${this.joomlaUrl}xxx`, this.httpOptions);
+    return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
   }
 
   getUser(id): Observable<any> {
-    return this.http.get(`${this.joomlaUrl}/${id}xxx`, this.httpOptions);
+    return this.http.get(`${this.joomlaUrl}/${id}`, this.httpOptions);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { Location } from '@angular/common';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-detail',
@@ -10,29 +11,32 @@ import { UserService } from '../services/user.service';
 export class DetailComponent implements OnInit {
 
   showSpinner = true;
-  userId;
-  user;
+  articleId;
+  article;
 
   constructor(
-    private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private articleService: ArticleService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
-    this.userId = this.activatedRoute.snapshot.paramMap.get('id');
-    if (this.userId) {
+    this.articleId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (this.articleId) {
       this.getDetail();
     }
   }
 
   getDetail() {
-    this.userService.getUser(this.userId)
-    .subscribe((res: any) => {
-      this.user = res.data;
-      this.showSpinner = false;
-      console.log(this.user);
-    
-    });
-  }
+    this.articleService.getArticle(this.articleId)
+      .subscribe((res: any) => {
+        this.article = res.data;
+        this.showSpinner = false;
+        console.log(this.article);
 
+      });
+  }
+  goBack(): void {
+    this.location.back();
+  }
 }

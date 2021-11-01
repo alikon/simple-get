@@ -14,7 +14,7 @@ export class UserService {
     })
   };
   constructor(
-    @Inject('apiUrl') private apiUrl,
+    @Inject('usersUrl') private apiUrl,
     private http: HttpClient
   ) { }
 

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JoomlaService } from './joomla.service';
+import { JoomlaService } from './article.service';
 
 describe('JoomlaService', () => {
   let service: JoomlaService;

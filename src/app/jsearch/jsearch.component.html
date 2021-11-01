@@ -1,0 +1,56 @@
+<div style="margin: 50px;">
+
+  <div class="container" style="text-align:center">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Article Search</h1>
+        <input type="text" #articleSearchInput class="form-control" placeholder="Type any text" />
+
+      </div>
+    </div>
+    <div class="row" *ngIf="isSearching">
+      <div class="col-12 text-center">
+
+        <h4>Searching ... </h4>
+
+      </div>
+    </div>
+    <div class="row" *ngIf="noResults">
+      <div class="col-12 text-center">
+
+        <h4>no data ... </h4>
+
+      </div>
+    </div>
+    <div class="row">
+
+      <ng-container *ngIf="apiResponse['Response'] == 'False'; else elseTemplate">
+
+        <div class="col-12 text-center">
+          <div class="alert alert-danger" role="alert">
+            {{apiResponse['Error']}}
+
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #elseTemplate>
+
+
+        <div class="col-3" *ngFor="let articles of apiResponse['data']">
+
+          <!-- <img class="card-img-top" src="{{movie['Poster']}}">-->
+          <div class="card-body">
+            <h5 class="card-title">{{articles.attributes.title}}</h5>
+            <p class="card-text">Id: {{articles.attributes.id}}</p>
+            <!-- <p [innerHTML]="articles.attributes.text" class="card-text"></p>-->
+          </div>
+
+        </div>
+
+      </ng-template>
+
+    </div>
+  </div>
+
+</div>

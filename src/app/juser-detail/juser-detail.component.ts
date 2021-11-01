@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JoomlaService } from '../services/joomla.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-juser-detail',
@@ -14,7 +14,7 @@ export class JuserDetailComponent implements OnInit {
   user;
 
   constructor(
-    private userService: JoomlaService,
+    private userService: UserService,
     private activatedRoute: ActivatedRoute
   ) { }
 

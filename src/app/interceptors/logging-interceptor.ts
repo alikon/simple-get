@@ -9,7 +9,7 @@ import { MessageService } from '../services/message.service';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
-  constructor(private messenger: MessageService) {}
+  constructor(private messenger: MessageService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const started = Date.now();
@@ -30,12 +30,12 @@ export class LoggingInterceptor implements HttpInterceptor {
           const elapsed = Date.now() - started;
           const msg = `${req.method} "${req.urlWithParams}"
              ${ok} in ${elapsed} ms. ${req.params}`;
-             
+
           this.messenger.add(msg);
           //window.alert(ok);
         }),
-      
+
       );
   }
- 
+
 }

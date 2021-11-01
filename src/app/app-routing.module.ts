@@ -10,10 +10,13 @@ const routes: Routes = [
     path: '', component: HomeComponent
   },
   {
-    path: 'joomla', component: JoomlaComponent
+    path: 'page', component: HomeComponent
   },
   {
     path: 'detail/:id', component: DetailComponent
+  },
+  {
+    path: 'joomla', component: JoomlaComponent
   },
   {
     path: 'juserdetail/:id', component: JuserDetailComponent

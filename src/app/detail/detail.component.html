@@ -1,15 +1,20 @@
-<p>juser-detail works!</p>
-<a routerLink="/">Go to list</a><br><br>
 
-<div class="detail" *ngIf="!showSpinner && user; else loading">
+<a routerLink="/">
+<span class="badge">Go to list</span>
+</a>
+<br><br>
+
+<div class="detail" *ngIf="!showSpinner && article; else loading">
  <!-- <img class="avatar" [src]="user.avatar">-->
   <div class="info">
-    <h1 class="title">{{ user.attributes.id + ' ' + user.attributes.title }}</h1>
+    <h1 class="title">{{ article.attributes.id + ' ' + article.attributes.title }}</h1>
     
-      <div [innerHTML]="user.attributes.text"></div>
+      <div [innerHTML]="article.attributes.text"></div>
     
   </div>
 </div>
 <ng-template #loading>
     Loading...
 </ng-template>
+<p>detail works!</p>
+<button (click)="goBack()">go back</button>

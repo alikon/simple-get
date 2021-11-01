@@ -14,6 +14,9 @@ import { JuserDetailComponent } from './juser-detail/juser-detail.component';
 import { MessageService } from './services/message.service';
 import { MessagesComponent } from './messages/messages.component';
 import { LoggingInterceptor } from './interceptors/logging-interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { JsearchComponent } from './jsearch/jsearch.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -21,17 +24,19 @@ import { LoggingInterceptor } from './interceptors/logging-interceptor';
 		DetailComponent,
 		JoomlaComponent,
 		JuserDetailComponent,
-		MessagesComponent
+		MessagesComponent,
+		JsearchComponent
 	],
 	imports: [
 		BrowserModule,
 		FormsModule,
 		AppRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		ReactiveFormsModule
 	],
 	providers: [
-		{ provide: 'apiUrl', useValue: 'http://localhost/cloud/api/index.php/v1/content/articles' },
-		{ provide: 'joomlaUrl', useValue: 'http://localhost/cloud/api/index.php/v1/users' },
+		{ provide: 'articlesUrl', useValue: 'http://localhost/cloud/api/index.php/v1/content/articles' },
+		{ provide: 'usersUrl', useValue: 'http://localhost/cloud/api/index.php/v1/users' },
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: LoggingInterceptor,

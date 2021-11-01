@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
   links;
   pageLimit;
   pageOffset;
-/*
-  profileForm = new FormGroup({
-    name: new FormControl(''),
-  });
-*/
+  /*
+    profileForm = new FormGroup({
+      name: new FormControl(''),
+    });
+  */
 
   constructor(
     private articleService: ArticleService,
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       console.log(params.offset);
       console.log(params.limit);
       if (params.offset != undefined && params.limit != undefined) {
-        this.getArticlesX(params.offset, params.limit);
+        this.getArticlesPage(params.offset, params.limit);
       }
       else {
         this.getArticles();
@@ -42,12 +42,11 @@ export class HomeComponent implements OnInit {
 
     });
 
-
   }
 
 
-  getArticlesX(offset, limit) {
-    this.articleService.getArticlesX(offset, limit)
+  getArticlesPage(offset, limit) {
+    this.articleService.getArticlesPage(offset, limit)
       .subscribe((res: any) => {
         const newRes = res.data;
         this.articles = newRes;
@@ -63,6 +62,7 @@ export class HomeComponent implements OnInit {
       });
 
   }
+
   getArticles() {
     this.articleService.getArticles()
       .subscribe((res: any) => {

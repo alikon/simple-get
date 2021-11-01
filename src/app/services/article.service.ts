@@ -24,25 +24,7 @@ export class ArticleService {
     return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
   }
 
-   /* GET heroes whose name contains search term */
-   searchArticlesX(term: string): Observable<any[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.http.get<Article[]>(`${this.joomlaUrl}?filter[search]=${term}`, this.httpOptions).pipe(
-      tap(x => x.length ?
-         console.log(`found heroes matching "${term}"`) :
-         console.log(`no heroes matching "${term}"`)
-      ),
-         
-         
-      catchError(this.handleError<Article[]>('searchHeroes', [])),
-  
-    );
  
-  }
-
   getArticle(id): Observable<any> {
     return this.http.get(`${this.joomlaUrl}/${id}`, this.httpOptions);
   }
@@ -52,7 +34,7 @@ export class ArticleService {
   }
 
 
-  getArticlesX(offset, limit): Observable<any> {
+  getArticlesPage(offset, limit): Observable<any> {
     return this.http.get(`${this.joomlaUrl}?page[offset]=${offset}&page[limit]=${limit}`, this.httpOptions);
   }
 

@@ -12,17 +12,6 @@ import { of } from "rxjs";
 import { fromEvent } from 'rxjs';
 import { HttpClient, HttpParams } from "@angular/common/http";
 
-const APIKEY = "e8067b53";
-
-const PARAMS = new HttpParams({
-  fromObject: {
-    action: "opensearch",
-    format: "json",
-    origin: "*"
-  }
-});
-
-
 @Component({
   selector: 'app-jsearch',
   templateUrl: './jsearch.component.html',
@@ -46,13 +35,8 @@ export class JsearchComponent implements OnInit {
     console.log(this.articleSearchInput);
   }
 
-  //private searchTerms = new Subject<string>();
-
-
   ngOnInit(): void {
     console.log(this.articleSearchInput);
-
-
 
     fromEvent(this.articleSearchInput.nativeElement, 'keyup').pipe(
 
@@ -94,7 +78,7 @@ export class JsearchComponent implements OnInit {
     if (term === '') {
       return of([]);
     }
-    //return this.httpClient.get('http://www.omdbapi.com/?s=' + term + '&apikey=' + APIKEY, { params: PARAMS.set('search', term) });
+
     return this.articleService.searchArticles(term)
   }
 

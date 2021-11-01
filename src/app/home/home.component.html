@@ -3,19 +3,19 @@
 <ul class="list" *ngIf="!showSpinner && articles; else loading">
   <li class="list-item" *ngFor="let article of articles; let i = index">
     <a class="list-title" routerLink="/detail/{{ article.id }}">
-      {{ i+1 }}-) {{ article.attributes.id + ' ' + article.attributes.title }}</a>
+       {{ article.attributes.id + ' ' + article.attributes.title }}</a>
     <!-- <p class="list-description">{{ article.attributes.text }}</p> -->
   </li>
 </ul>
 <nav>
-  <a *ngIf="links && links.first" class="button" [queryParams]="{offset: 10, limit: 5}" routerLink="/page">first </a>
+  <a *ngIf="links && links.first" class="button" [queryParams]="qpFirst" routerLink="/page">first </a>
 
-  <a *ngIf="links && links.previous" class="button" [queryParams]="{offset: 5, limit: 3}" routerLink="/page"> previous
+  <a *ngIf="links && links.previous" class="button" [queryParams]="qpPrevious" routerLink="/page"> previous
   </a>
 
-  <a *ngIf="links && links.next" class="button" [queryParams]="{offset: 10, limit: 5}" routerLink="/page"> next </a>
+  <a *ngIf="links && links.next" class="button" [queryParams]="qpNext" routerLink="/page"> next </a>
 
-  <a *ngIf="links && links.last" class="button" [queryParams]="{offset: 10, limit: 5}" routerLink="/page"> last</a>
+  <a *ngIf="links && links.last" class="button" [queryParams]="qpLast" routerLink="/page"> last</a>
   <nav>
     <p *ngIf="meta && meta['total-pages']">
       Total pages: {{ meta["total-pages"]}}

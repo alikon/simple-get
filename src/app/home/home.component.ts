@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   links;
   pageLimit;
   pageOffset;
+  qpNext = { offset: 10, limit: 5 };
+  qpLast = { offset: 10, limit: 5 };
+  qpFirst = { offset: 10, limit: 5 }
+  qpPrevious = { offset: 10, limit: 5 };
   /*
     profileForm = new FormGroup({
       name: new FormControl(''),
@@ -30,6 +34,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const filter = this.route.snapshot.queryParamMap.get('filter');
+    console.log('filter',filter); // Pepperoni
+
+
     this.route.queryParams.subscribe(params => {
       console.log(params.offset);
       console.log(params.limit);
@@ -57,8 +65,79 @@ export class HomeComponent implements OnInit {
 
         //links.next = 'page[offset]=10&page[limit]=5';
         //links.last = 'page[offset]=20&page[limit]=20';
+
+        //Next
+        if (links.next) {
+          var url = new URL(links.next);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+
+            }
+            obj[key] = value;
+           // console.log('key ', key)
+          });
+          console.log('next ', obj)
+          this.qpNext.offset = this.pageOffset
+          this.qpNext.limit = this.pageLimit
+        }
+        //Last
+        if (links.last) {
+          var url = new URL(links.last);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+            }
+          });
+          console.log('last ', obj)
+          this.qpLast.offset = this.pageOffset
+          this.qpLast.limit = this.pageLimit
+        }
+        //First
+        if (links.first) {
+          var url = new URL(links.first);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+            }
+          });
+          console.log('first ', obj)
+          this.qpFirst.offset = this.pageOffset
+          this.qpFirst.limit = this.pageLimit
+        }
+        // previous
+        if (links.previous) {
+          var url = new URL(links.previous);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+            }
+          });
+          console.log('prev ', obj)
+          this.qpPrevious.offset = this.pageOffset
+          this.qpPrevious.limit = this.pageLimit
+        }
+
+
         this.showSpinner = false;
-        console.log(this.meta)
+        console.log('off----',offset)
+        console.log('imit',limit)
       });
 
   }
@@ -72,8 +151,74 @@ export class HomeComponent implements OnInit {
         this.meta = metaD;
         const links = res.links;
         this.links = links
-        //links.next = 'page[offset]=10&page[limit]=5';
-        //links.last = 'page[offset]=20&page[limit]=20';
+        //Next
+        if (links.next) {
+          var url = new URL(links.next);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+
+            }
+            obj[key] = value;
+           // console.log('key ', key)
+          });
+          console.log('next ', obj)
+          this.qpNext.offset = this.pageOffset
+          this.qpNext.limit = this.pageLimit
+        }
+        //Last
+        if (links.last) {
+          var url = new URL(links.last);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+            }
+          });
+          console.log('last ', obj)
+          this.qpLast.offset = this.pageOffset
+          this.qpLast.limit = this.pageLimit
+        }
+        //First
+        if (links.first) {
+          var url = new URL(links.first);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+            }
+          });
+          console.log('first ', obj)
+          this.qpFirst.offset = this.pageOffset
+          this.qpFirst.limit = this.pageLimit
+        }
+        // previous
+        if (links.previous) {
+          var url = new URL(links.previous);
+          let obj = {};
+          var c = url.searchParams.forEach((value, key) => {
+            if (key == 'page[offset]') {
+              this.pageOffset = value
+            }
+            if (key == 'page[limit]') {
+              this.pageLimit = value
+            }
+          });
+          console.log('prev ', obj)
+          this.qpPrevious.offset = this.pageOffset
+          this.qpPrevious.limit = this.pageLimit
+        }
+
         this.showSpinner = false;
         console.log(metaD)
       });

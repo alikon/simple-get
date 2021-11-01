@@ -22,7 +22,8 @@ export class ArticleService {
   ) { }
 
   getArticles(): Observable<any> {
-    return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
+   // return this.http.get(`${this.joomlaUrl}`, this.httpOptions);
+    return this.http.get(`${this.joomlaUrl}?page[offset]=0&page[limit]=5`, this.httpOptions);
   }
 
  

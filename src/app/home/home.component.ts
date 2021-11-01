@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   qpLast = { offset: 10, limit: 5 };
   qpFirst = { offset: 10, limit: 5 }
   qpPrevious = { offset: 10, limit: 5 };
+  pagenum;
   /*
     profileForm = new FormGroup({
       name: new FormControl(''),
@@ -62,7 +63,7 @@ export class HomeComponent implements OnInit {
         this.meta = metaD;
         const links = res.links;
         this.links = links
-
+this.pagenum = offset == 0 ? 1 : offset / limit +1
         //links.next = 'page[offset]=10&page[limit]=5';
         //links.last = 'page[offset]=20&page[limit]=20';
 
@@ -151,6 +152,7 @@ export class HomeComponent implements OnInit {
         this.meta = metaD;
         const links = res.links;
         this.links = links
+        this.pagenum = 1
         //Next
         if (links.next) {
           var url = new URL(links.next);

@@ -18,7 +18,7 @@
   <a *ngIf="links && links.last" class="button" [queryParams]="qpLast" routerLink="/page"> last</a>
   <nav>
     <p *ngIf="meta && meta['total-pages']">
-      Total pages: {{ meta["total-pages"]}}
+      Page {{ pagenum}} of {{ meta["total-pages"]}}
     </p>
     <app-jsearch></app-jsearch>
     <ng-template #loading>

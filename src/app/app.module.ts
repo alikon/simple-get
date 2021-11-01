@@ -35,8 +35,8 @@ import { JsearchComponent } from './jsearch/jsearch.component';
 		ReactiveFormsModule
 	],
 	providers: [
-		{ provide: 'articlesUrl', useValue: 'http://localhost/cloud/api/index.php/v1/content/articles' },
-		{ provide: 'usersUrl', useValue: 'http://localhost/cloud/api/index.php/v1/users' },
+		{ provide: 'articlesUrl', useValue: 'https://www.alikonweb.it/api/index.php/v1/content/articles' },
+		{ provide: 'usersUrl', useValue: 'https://www.alikonweb.it/api/index.php/v1/users' },
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: LoggingInterceptor,

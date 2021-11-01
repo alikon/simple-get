@@ -8,7 +8,8 @@ import { catchError, finalize, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ArticleService {
-  token = 'c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA='
+  //token = 'c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA='
+  token='c2hhMjU2OjE2NzpiNjI2ZTdhNjgzY2E1M2UzNmVjZDllYTAzOTAwZThmNjBhZDM5YjQxZWJmNTU1YzI4YjgzZDBkNmEwZmExNzYz'
   httpOptions = {
     headers: new HttpHeaders({
       'X-Joomla-Token': this.token,

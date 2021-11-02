@@ -77,12 +77,11 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
             }
             if (key == 'page[limit]') {
               this.pageLimit = value
-
             }
             obj[key] = value;
            // console.log('key ', key)
           });
-          console.log('next ', obj)
+         // console.log('next ', obj)
           this.qpNext.offset = this.pageOffset
           this.qpNext.limit = this.pageLimit
         }
@@ -98,7 +97,7 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
               this.pageLimit = value
             }
           });
-          console.log('last ', obj)
+         // console.log('last ', obj)
           this.qpLast.offset = this.pageOffset
           this.qpLast.limit = this.pageLimit
         }
@@ -114,7 +113,7 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
               this.pageLimit = value
             }
           });
-          console.log('first ', obj)
+         // console.log('first ', obj)
           this.qpFirst.offset = this.pageOffset
           this.qpFirst.limit = this.pageLimit
         }
@@ -130,15 +129,14 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
               this.pageLimit = value
             }
           });
-          console.log('prev ', obj)
+          //console.log('prev ', obj)
           this.qpPrevious.offset = this.pageOffset
           this.qpPrevious.limit = this.pageLimit
         }
 
 
         this.showSpinner = false;
-        console.log('off----',offset)
-        console.log('imit',limit)
+        
       });
 
   }
@@ -168,7 +166,7 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
             obj[key] = value;
            // console.log('key ', key)
           });
-          console.log('next ', obj)
+         // console.log('next ', obj)
           this.qpNext.offset = this.pageOffset
           this.qpNext.limit = this.pageLimit
         }
@@ -184,7 +182,7 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
               this.pageLimit = value
             }
           });
-          console.log('last ', obj)
+          //console.log('last ', obj)
           this.qpLast.offset = this.pageOffset
           this.qpLast.limit = this.pageLimit
         }
@@ -200,7 +198,7 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
               this.pageLimit = value
             }
           });
-          console.log('first ', obj)
+          //console.log('first ', obj)
           this.qpFirst.offset = this.pageOffset
           this.qpFirst.limit = this.pageLimit
         }
@@ -216,13 +214,13 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
               this.pageLimit = value
             }
           });
-          console.log('prev ', obj)
+          //console.log('prev ', obj)
           this.qpPrevious.offset = this.pageOffset
           this.qpPrevious.limit = this.pageLimit
         }
 
         this.showSpinner = false;
-        console.log(metaD)
+        //console.log(metaD)
       });
   }
 }

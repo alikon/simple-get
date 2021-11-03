@@ -1,23 +1,23 @@
+<app-menu></app-menu>
 <div class="container" style="text-align:center">
   <div class="row">
     <div class="col-12 text-center">
-      <h1>Article Search</h1>
+      <h2>Article Search</h2>
       <input type="text" #articleSearchInput class="form-control" placeholder="Type any text" />
 
     </div>
   </div>
   <div class="row" *ngIf="isSearching">
     <div class="col-12 text-center">
-
-      <h4>Searching ... </h4>
-
+      <div>
+        <h4>Searching ... </h4>
+        <span class="spinner-border spinner-border-lg align-center"></span>
+      </div>
     </div>
   </div>
   <div class="row" *ngIf="noResults">
     <div class="col-12 text-center">
-
-      <h4>no data ... </h4>
-
+      <h4>getting data ... </h4>
     </div>
   </div>
   <div class="row">
@@ -42,6 +42,7 @@
           <h5 class="card-title">{{articles.attributes.title}}</h5>
           <p class="card-text">Id: {{articles.attributes.id}}</p>
           <!-- <p [innerHTML]="articles.attributes.text" class="card-text"></p>-->
+          <a routerLink="/detail/{{articles.id}}" class="btn btn-sm btn-primary mr-1">Read more</a>
         </div>
 
       </div>

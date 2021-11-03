@@ -1,18 +1,39 @@
-<a routerLink="/">Go to Articles</a><br><br>
-<h1>Users</h1>
-<nav>
-  <a *ngIf="links.next" class="list-title" href="{{ links.next }}">next</a>
-  <a *ngIf="links.last" class="list-title" href="{{ links.last }}">last</a>
-</nav>
-<ul class="list" *ngIf="!showSpinner && users; else loading">
-  <li class="list-item" *ngFor="let user of users; let i = index">
-    <a class="list-title" routerLink="/juserdetail/{{ user.id }}">
-      {{ user.id }}-{{ i+1 }}) {{ user.attributes.username + ' ' + user.attributes.name }}</a>
-    <p class="list-description">{{ user.attributes.email }}</p>
-  </li>
-</ul>
+<app-menu></app-menu>
+<h2>Users</h2>
+<div>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th style="width: 30%">Id</th>
+          <th style="width: 30%">Name</th>
+          <th style="width: 30%">Role</th>
+          <th style="width: 10%"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let user of users">
+          <td>{{user.id}}</td>
+          <td>{{user.attributes.username}}</td>
+          <td>{{user.attributes.group_names}}</td>
+          
+          <td style="white-space: nowrap">
+              <a routerLink="/juserdetail/{{user.id}}" class="btn btn-sm btn-primary mr-1">View</a>
+              <!--
+              <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
+                  <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                  <span *ngIf="!user.isDeleting">Delete</span>
+              </button>--->
+          </td>
+      </tr>
+      <tr *ngIf="!users">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<div>
 <ng-template #loading>
   Loading...
 </ng-template>
-<p>joomla works!</p>
-
+</div>

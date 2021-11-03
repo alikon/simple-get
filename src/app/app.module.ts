@@ -16,6 +16,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { LoggingInterceptor } from './interceptors/logging-interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JsearchComponent } from './jsearch/jsearch.component';
+import { LocalComponentComponent } from './local-component/local-component.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +27,9 @@ import { JsearchComponent } from './jsearch/jsearch.component';
 		JoomlaComponent,
 		JuserDetailComponent,
 		MessagesComponent,
-		JsearchComponent
+		JsearchComponent,
+		LocalComponentComponent,
+		MenuComponent
 	],
 	imports: [
 		BrowserModule,

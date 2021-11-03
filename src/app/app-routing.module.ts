@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { JoomlaComponent } from './joomla/joomla.component';
 import { JuserDetailComponent } from './juser-detail/juser-detail.component';
+import { LocalComponentComponent } from './local-component/local-component.component';
+import { JsearchComponent } from './jsearch/jsearch.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,15 @@ const routes: Routes = [
   {
     path: 'juserdetail/:id', component: JuserDetailComponent
   }
+  ,
+  // {
+  //   path: 'local', component: LocalComponentComponent
+  // }
+  // ,
+  {
+    path: 'search', component:  JsearchComponent
+  }
+ 
 ];
 
 @NgModule({

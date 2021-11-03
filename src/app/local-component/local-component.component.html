@@ -1,0 +1,26 @@
+<h4> Add person </h4>
+  <table>
+    <tr>
+      <td>Firstname</td>
+     <td> <input [(ngModel)]="firstname" name="firstname" type="text"></td>
+   </tr>
+   <tr>
+     <td>Lastname</td>
+     <td> <input [(ngModel)]="lastname" name="lastname" type="text"></td> 
+   </tr>
+  <tr> 
+    <td>Age</td> 
+    <td> <input [(ngModel)]="age" name="age" type="number"></td> </tr>
+<tr> <td></td> <td><button (click)="addPerson()">Add</button></td>
+</tr>
+</table>
+<h4> Get person </h4>
+<input [(ngModel)]="queryKey" name="queryKey" type="text"><br>
+<button (click)="getPerson(queryKey)"> Get </button>
+<h4>Result</h4>
+{{queryResult}}
+<h4> Delete person</h4>
+  <input [(ngModel)]="removeKey" name="removeKey" type="text"> <br>
+  <button (click)="deletePerson(removeKey)"> Delete </button>
+<h4> Reset store </h4>
+<button (click)="reset()"> Reset </button>

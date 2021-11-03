@@ -32,7 +32,7 @@ export class JoomlaComponent implements OnInit {
         const links = res.links;
         this.links = links;
         this.showSpinner = false;
-        console.log(this.links)
+        console.log('USER',this.users)
         this.showSpinner = false;
       });
   }

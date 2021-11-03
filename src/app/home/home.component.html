@@ -1,28 +1,59 @@
-<a routerLink="/joomla">Go to joomla user list</a><br><br>
-<h1>Home</h1>
+<app-menu></app-menu>
 <div>
-  <app-jsearch></app-jsearch>
-  <ul class="list" *ngIf="!showSpinner && articles; else loading">
-    <li class="list-item" *ngFor="let article of articles; let i = index">
-      <a class="list-title" routerLink="/detail/{{ article.id }}">
-        {{ article.attributes.id + ' ' + article.attributes.title }}</a>
-      <!-- <p class="list-description">{{ article.attributes.text }}</p> -->
-    </li>
-  </ul>
-  <nav>
-    <a *ngIf="links && links.first" class="button" [queryParams]="qpFirst" routerLink="/page">first </a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="width: 60%">Title</th>
+        <th style="width: 20%"></th>
+        <th style="width: 10%">Author</th>
+        <th style="width: 10%">Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles">
+        <td>{{article.attributes.title}}</td>
+        <!--<td [innerHTML]="article.attributes.text"></td> --->
+        <!--<td>{{article.attributes.created_by}}</td> --->
+        <td style="white-space: nowrap">
+          <a routerLink="/detail/{{article.id}}" class="btn btn-sm btn-primary mr-1">Read more</a>
+          <!--
+                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
+                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!user.isDeleting">Delete</span>
+                </button>--->
+        </td>
+        <td>
+          <a routerLink="/juserdetail/{{article.attributes.created_by}}"
+            class="btn btn-sm btn-secondary mr-1">Profile</a>
+        </td>
 
-    <a *ngIf="links && links.previous" class="button" [queryParams]="qpPrevious" routerLink="/page"> previous</a>
 
-    <a *ngIf="links && links.next" class="button" [queryParams]="qpNext" routerLink="/page"> next </a>
+        <td>{{article.id}}</td>
+      </tr>
+      <tr *ngIf="!articles">
+        <td colspan="4" class="text-center">
+          <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-    <a *ngIf="links && links.last" class="button" [queryParams]="qpLast" routerLink="/page"> last</a>
-  </nav>
-      <p *ngIf="meta && meta['total-pages']">
-        Page {{ pagenum}} of {{ meta["total-pages"]}}
-      </p>
 
-      <ng-template #loading>
-        Loading...
-      </ng-template>
-</div>
+  <div>
+    <nav>
+      <a *ngIf="links && links.first" class="button" [queryParams]="qpFirst" routerLink="/page">first </a>
+
+      <a *ngIf="links && links.previous" class="button" [queryParams]="qpPrevious" routerLink="/page"> previous</a>
+
+      <a *ngIf="links && links.next" class="button" [queryParams]="qpNext" routerLink="/page"> next </a>
+
+      <a *ngIf="links && links.last" class="button" [queryParams]="qpLast" routerLink="/page"> last</a>
+    </nav>
+    <p *ngIf="meta && meta['total-pages']">
+      Page {{ pagenum}} of {{ meta["total-pages"]}}
+    </p>
+
+    <ng-template #loading>
+      Loading...
+    </ng-template>
+  </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class JuserDetailComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -30,11 +32,15 @@ export class JuserDetailComponent implements OnInit {
     .subscribe((res: any) => {
       this.user = res.data;
       this.showSpinner = false;
-      let a  = JSON.parse( this.user.attributes.mediafielduser)
-      this.user.attributes.mediafielduser = 'http://dev4.loc/'+ a.imagefile.split('#', 1)
-      console.log(this.user.attributes.mediafielduser);
+     // let a  = JSON.parse( this.user.attributes.mediafielduser)
+      //this.user.attributes.mediafielduser = 'http://dev4.loc/'+ a.imagefile.split('#', 1)
+      console.log(this.user.attributes);
     }, (err: any) => {
       console.log(err);
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

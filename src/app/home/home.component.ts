@@ -35,8 +35,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const filter = this.route.snapshot.queryParamMap.get('filter');
-    console.log('filter',filter); // Pepperoni
 
 
     this.route.queryParams.subscribe(params => {
@@ -63,9 +61,7 @@ export class HomeComponent implements OnInit {
         this.meta = metaD;
         const links = res.links;
         this.links = links
-this.pagenum = offset == 0 ? 1 : offset / limit +1
-        //links.next = 'page[offset]=10&page[limit]=5';
-        //links.last = 'page[offset]=20&page[limit]=20';
+        this.pagenum = offset == 0 ? 1 : offset / limit + 1
 
         //Next
         if (links.next) {
@@ -220,7 +216,7 @@ this.pagenum = offset == 0 ? 1 : offset / limit +1
         }
 
         this.showSpinner = false;
-        //console.log(metaD)
+        console.log(this.articles)
       });
   }
 }

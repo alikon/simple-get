@@ -1,14 +1,21 @@
-<a routerLink="/joomla">Go to list</a><br><br>
-<h2>User</h2>
+<app-menu></app-menu>
+<h2>User Detail</h2>
 <div class="detail" *ngIf="!showSpinner && user; else loading">
   <img class="avatar" [src]="user.attributes.mediafielduser">
   <div class="info">
-    <h1 class="title">{{ user.attributes.username + ' ' + user.attributes.name}}</h1>
+    <h4 class="title">User: {{ user.attributes.username}}</h4>
+    <h4 class="title">Name: {{user.attributes.name}}</h4>
     <p class="description">
-      {{user.attributes.email }}
+     Registered: {{user.attributes.registerDate }}
+    </p>
+    <p class="description">
+     Last visit: {{user.attributes.lastvisitDate }}
     </p>
   </div>
 </div>
+<button class="btn btn-sm btn-primary mr-1" (click)="goBack()">go back</button>
 <ng-template #loading>
-  Loading...
+  <div>
+    <span class="spinner-border spinner-border-lg align-center"></span>
+    </div>
 </ng-template>

@@ -18,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JsearchComponent } from './jsearch/jsearch.component';
 import { LocalComponentComponent } from './local-component/local-component.component';
 import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
+// used to create fake backend
+import { fakeBackendProvider } from './interceptors/fake-backend';
 
 @NgModule({
 	declarations: [
@@ -29,7 +32,9 @@ import { MenuComponent } from './menu/menu.component';
 		MessagesComponent,
 		JsearchComponent,
 		LocalComponentComponent,
-		MenuComponent
+		MenuComponent,
+		LoginComponent,
+		
 	],
 	imports: [
 		BrowserModule,
@@ -46,7 +51,9 @@ import { MenuComponent } from './menu/menu.component';
 			useClass: LoggingInterceptor,
 			multi: true
 		},
-		MessageService
+		MessageService,
+		 // provider used to create fake backend
+		 fakeBackendProvider
 	],
 	bootstrap: [AppComponent]
 })

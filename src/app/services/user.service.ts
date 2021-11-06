@@ -20,7 +20,11 @@ export class UserService {
   ) { }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`, this.httpOptions);
+    return this.http.get(`${this.apiUrl}?page[offset]=0&page[limit]=5`, this.httpOptions);
+  }
+
+  getUsersPage(offset, limit): Observable<any> {
+    return this.http.get(`${this.apiUrl}?page[offset]=${offset}&page[limit]=${limit}`, this.httpOptions);
   }
 
   getUser(id): Observable<any> {

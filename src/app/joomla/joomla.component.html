@@ -1,39 +1,52 @@
 <app-menu></app-menu>
-<h2>Users</h2>
 <div>
-<table class="table table-striped">
-  <thead>
+  <table class="table table-striped">
+    <thead>
       <tr>
-          <th style="width: 30%">Id</th>
-          <th style="width: 30%">Name</th>
-          <th style="width: 30%">Role</th>
-          <th style="width: 10%"></th>
+        <th style="width: 30%">Id</th>
+        <th style="width: 30%">Name</th>
+        <th style="width: 30%">Role</th>
+        <th style="width: 10%"></th>
       </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
       <tr *ngFor="let user of users">
-          <td>{{user.id}}</td>
-          <td>{{user.attributes.username}}</td>
-          <td>{{user.attributes.group_names}}</td>
-          
-          <td style="white-space: nowrap">
-              <a routerLink="/juserdetail/{{user.id}}" class="btn btn-sm btn-primary mr-1">View</a>
-              <!--
+        <td>{{user.id}}</td>
+        <td>{{user.attributes.username}}</td>
+        <td>{{user.attributes.group_names}}</td>
+
+        <td style="white-space: nowrap">
+          <a routerLink="/juserdetail/{{user.id}}" class="btn btn-sm btn-primary mr-1">View</a>
+          <!--
               <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
                   <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
                   <span *ngIf="!user.isDeleting">Delete</span>
               </button>--->
-          </td>
+        </td>
       </tr>
       <tr *ngIf="!users">
         <td colspan="4" class="text-center">
           <span class="spinner-border spinner-border-lg align-center"></span>
         </td>
       </tr>
-  </tbody>
-</table>
-<div>
-<ng-template #loading>
-  Loading...
-</ng-template>
+    </tbody>
+  </table>
+  <div>
+    <nav>
+      <a *ngIf="links && links.first" class="button" [queryParams]="qpFirst" routerLink="/userpage">first </a>
+
+      <a *ngIf="links && links.previous" class="button" [queryParams]="qpPrevious" routerLink="/userpage"> previous</a>
+
+      <a *ngIf="links && links.next" class="button" [queryParams]="qpNext" routerLink="/userpage"> next </a>
+
+      <a *ngIf="links && links.last" class="button" [queryParams]="qpLast" routerLink="/userpage"> last</a>
+    </nav>
+    <p *ngIf="meta && meta['total-pages']">
+      Page {{ pagenum}} of {{ meta["total-pages"]}}
+    </p>
+
+    <ng-template #loading>
+      Loading...
+    </ng-template>
+  </div>
 </div>

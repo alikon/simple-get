@@ -6,6 +6,10 @@ import { JoomlaComponent } from './joomla/joomla.component';
 import { JuserDetailComponent } from './juser-detail/juser-detail.component';
 import { LocalComponentComponent } from './local-component/local-component.component';
 import { JsearchComponent } from './jsearch/jsearch.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from  './services/authGuard'
+
+
 
 const routes: Routes = [
   {
@@ -24,12 +28,19 @@ const routes: Routes = [
     path: 'juserdetail/:id', component: JuserDetailComponent
   }
   ,
-  // {
-  //   path: 'local', component: LocalComponentComponent
-  // }
-  // ,
+  {
+    path: 'userpage', component: JoomlaComponent
+  },
   {
     path: 'search', component:  JsearchComponent
+  }
+  ,
+  {
+    path: 'login', component:  LoginComponent
+  }
+  ,
+  {
+    path: 'local', component:  LocalComponentComponent, canActivate: [AuthGuard]
   }
  
 ];

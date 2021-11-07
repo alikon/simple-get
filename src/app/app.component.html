@@ -1,4 +1,9 @@
-<router-outlet></router-outlet>
+<div class="jumbotron p-4">
+    <div class="container text-center">
+        <alert></alert>
+        <router-outlet></router-outlet>
+    </div>
+</div>
 <div *ngIf="debug">
     debug on
     <app-messages></app-messages>

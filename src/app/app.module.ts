@@ -21,6 +21,11 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 // used to create fake backend
 import { fakeBackendProvider } from './interceptors/fake-backend';
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AlertComponent } from './alert/alert.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
 	declarations: [
@@ -34,6 +39,8 @@ import { fakeBackendProvider } from './interceptors/fake-backend';
 		LocalComponentComponent,
 		MenuComponent,
 		LoginComponent,
+		AlertComponent,
+		RegisterComponent,
 		
 	],
 	imports: [
@@ -41,11 +48,16 @@ import { fakeBackendProvider } from './interceptors/fake-backend';
 		FormsModule,
 		AppRoutingModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		BrowserAnimationsModule, // required animations module
+
 	],
+	exports: [AlertComponent],
 	providers: [
-		{ provide: 'articlesUrl', useValue: 'https://www.alikonweb.it/api/index.php/v1/content/articles' },
-		{ provide: 'usersUrl', useValue: 'https://www.alikonweb.it/api/index.php/v1/users' },
+		//{ provide: 'articlesUrl', useValue: 'https://www.alikonweb.it/api/index.php/v1/content/articles' },
+		{ provide: 'articlesUrl', useValue: environment.articlesEndpoint },
+		//{ provide: 'usersUrl', useValue: 'https://www.alikonweb.it/api/index.php/v1/users' },
+		{ provide: 'usersUrl', useValue: environment.usersEndpoint },
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: LoggingInterceptor,

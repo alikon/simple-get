@@ -8,6 +8,7 @@ import { LocalComponentComponent } from './local-component/local-component.compo
 import { JsearchComponent } from './jsearch/jsearch.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from  './services/authGuard'
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -41,7 +42,8 @@ const routes: Routes = [
   ,
   {
     path: 'local', component:  LocalComponentComponent, canActivate: [AuthGuard]
-  }
+  },
+  { path: 'register', component: RegisterComponent }
  
 ];
 

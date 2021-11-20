@@ -14,6 +14,7 @@ export class LocalComponentComponent {
   loading = false;
   users: User[];
 
+  myInfo$ = this.localStorageService.myData$
   public firstname: string = '';
   public lastname: string = '';
   public age: number = null;
@@ -39,16 +40,12 @@ export class LocalComponentComponent {
     this.localStorageService.clear();
   }
   public getAll() {
+    console.log('ALL',this.myInfo$);
     this.userResult = this.localStorageService.getAll();
   }
 
   
   ngOnInit() {
     this.loading = true;
-    this.localStorageService.getAll().pipe(first()).subscribe(users => {
-      console.log('LOCAL',users);
-        this.loading = false;
-        this.users = users;
-    });
 }
 }

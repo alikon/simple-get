@@ -1,4 +1,4 @@
-<app-menu></app-menu>
+<h2>Articles</h2>
 <div>
   <table class="table table-striped">
     <thead>
@@ -40,17 +40,25 @@
 
 
   <div>
-    <nav>
-      <a *ngIf="links && links.first" class="button" [queryParams]="qpFirst" routerLink="/page">first </a>
-
-      <a *ngIf="links && links.previous" class="button" [queryParams]="qpPrevious" routerLink="/page"> previous</a>
-
-      <a *ngIf="links && links.next" class="button" [queryParams]="qpNext" routerLink="/page"> next </a>
-
-      <a *ngIf="links && links.last" class="button" [queryParams]="qpLast" routerLink="/page"> last</a>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a *ngIf="links && links.first" class="btn btn-primary" [queryParams]="qpFirst" routerLink="/page">first </a>
+        </li>
+        <li class="page-item">
+          <a *ngIf="links && links.previous" class="btn btn-primary" [queryParams]="qpPrevious" routerLink="/page">
+            previous</a>
+        </li>
+        <li class="page-item">
+          <a *ngIf="links && links.next" class="btn btn-primary" [queryParams]="qpNext" routerLink="/page"> next </a>
+        </li>
+        <li class="page-item">
+          <a *ngIf="links && links.last" class="btn btn-primary" [queryParams]="qpLast" routerLink="/page"> last</a>
+        </li>
+      </ul>
     </nav>
     <p *ngIf="meta && meta['total-pages']">
-      Page {{ pagenum}} of {{ meta["total-pages"]}}
+      Page <span class="badge badge-primary">{{ pagenum}}</span> of <span class="badge badge-success">{{ meta["total-pages"]}}</span>
     </p>
 
     <ng-template #loading>

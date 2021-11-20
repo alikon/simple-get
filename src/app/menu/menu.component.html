@@ -1,29 +1,24 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">AlikonWeb</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-    </ul>
 
-    <ul class="navbar-nav ml-auto" *ngIf="!currentUser">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
-      </li>
-    </ul>
+<ul class="list-group">
+  <li class="list-group-item">
+    <a href="#">Blog</a>
+  </li>
+  <li class="list-group-item">
+    <a href="javascript:void(0)"routerLink="/joomla" routerLinkActive="active" >Authors</a>
+  </li>
+  <li class="list-group-item">
+    <a href="javascript:void(0)"routerLink="/local" routerLinkActive="active" >Storage</a>
+  </li>
+  <li class="list-group-item">
+    <a href="javascript:void(0)"routerLink="/search" routerLinkActive="active" >Search</a>
+  </li>
+  <li class="list-group-item">
+    <a href="javascript:void(0)"routerLink="/users" routerLinkActive="active" >Users</a>
+  </li>
+</ul>
+<!--
 
-    <ul class="navbar-nav ml-auto" *ngIf="currentUser">
-      <li class="nav-item">
-        <a href="#" class="navbar-brand"> {{ username }}</a>
-        <!--<a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>-->
-       
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
-      </li>
-    </ul>
-  </nav>
   <nav class="navbar navbar-expand navbar-white">
     <a href="#" class="navbar-brand">Blog</a>
     <div class="navbar-nav mr-auto">
@@ -40,3 +35,4 @@
       </li>
     </div>
   </nav>
+  -->

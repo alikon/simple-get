@@ -17,16 +17,19 @@ export class AccountService {
     ) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
         this.user = this.userSubject.asObservable();
+        console.log('Obs', this.user)
     }
 
     public get userValue(): User {
         return this.userSubject.value;
     }
-
+    
     login(username, password) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<User>(`${environment.backendServer}/index.php/v1/jobs/login`, { username, password })
             .pipe(map(user => {
+                console.log('USER>>>', user.data.length > 0 ? user.data[0] : 'FAILED')
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
+                user.data[0].username = username
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 return user;
@@ -37,7 +40,7 @@ export class AccountService {
         // remove user from local storage and set current user to null
         localStorage.removeItem('user');
         this.userSubject.next(null);
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/login']);
     }
 
     register(user: User) {
@@ -45,7 +48,9 @@ export class AccountService {
     }
 
     getAll() {
+        console.log('getAll',`${environment.apiUrl}/users`)
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
+        //return localStorage.getItem('users')
     }
 
     getById(id: string) {
@@ -72,7 +77,7 @@ export class AccountService {
         return this.http.delete(`${environment.apiUrl}/users/${id}`)
             .pipe(map(x => {
                 // auto logout if the logged in user deleted their own record
-                if (id == this.userValue.id) {
+                if (id == this.userValue?.id) {
                     this.logout();
                 }
                 return x;

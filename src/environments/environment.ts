@@ -7,7 +7,8 @@ export const environment = {
   apiUrl: 'http://localhost:4000',
   token:'c2hhMjU2OjQxOjViOGJiODlkM2QxODdiMzc2ZTlmYjlhZDI1YzBlZjQzODg1NGJkOGRiZWE2OTJmZTY4OTE2Y2UzZjBjY2UxNjA=',
   articlesEndpoint: 'http://localhost/cloud/api/index.php/v1/content/articles',
-  usersEndpoint: 'http://localhost/cloud/api/index.php/v1/users'
+  usersEndpoint: 'http://localhost/cloud/api/index.php/v1/users',
+  backendServer: 'http://localhost/cloud/api'
 };
 
 /*

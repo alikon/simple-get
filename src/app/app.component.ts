@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { Event, NavigationEnd, Router } from '@angular/router';
+import { AuthenticationService } from './services/authentication.service';
+import { MessageService } from './services/message.service';
+import { User } from './models/user';
+import { AccountService } from './services/account.service';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +14,17 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'JoomlAngular';
-  debug = true;
-  private roles: string[] = [];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  username?: string;
+  user: User;
+  debug = false
 
-  
-  ngOnInit(): void {
+  constructor(private accountService: AccountService) {
+    this.accountService.user.subscribe(x => this.user = x);
+  }
+  ngOnInit() {
+    console.log('AppComponent.ngOnInit()',this.user);
+
+  }
+  logout() {
+    this.accountService.logout();
   }
 }

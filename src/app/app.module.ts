@@ -5,12 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
-//import { TypicodeService } from './services/typicode.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-//import { UserService } from './services/user.service';
 import { JoomlaComponent } from './joomla/joomla.component';
 import { JuserDetailComponent } from './juser-detail/juser-detail.component';
-//import { AppHttpInterceptor } from './interceptors/resterror-interceptor';
 import { MessageService } from './services/message.service';
 import { MessagesComponent } from './messages/messages.component';
 import { LoggingInterceptor } from './interceptors/logging-interceptor';
@@ -26,6 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AlertComponent } from './alert/alert.component';
 import { RegisterComponent } from './register/register.component';
+import { ListComponent } from './list/list.component';
+import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
 	declarations: [
@@ -41,7 +41,8 @@ import { RegisterComponent } from './register/register.component';
 		LoginComponent,
 		AlertComponent,
 		RegisterComponent,
-		
+		ListComponent,
+		EditComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -63,6 +64,7 @@ import { RegisterComponent } from './register/register.component';
 			useClass: LoggingInterceptor,
 			multi: true
 		},
+		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
 		MessageService,
 		 // provider used to create fake backend
 		 fakeBackendProvider

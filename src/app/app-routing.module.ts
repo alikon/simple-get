@@ -9,6 +9,8 @@ import { JsearchComponent } from './jsearch/jsearch.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from  './services/authGuard'
 import { RegisterComponent } from './register/register.component';
+import { ListComponent } from './list/list.component';
+import { EditComponent } from './edit/edit.component';
 
 
 
@@ -44,6 +46,11 @@ const routes: Routes = [
     path: 'local', component:  LocalComponentComponent, canActivate: [AuthGuard]
   },
   { path: 'register', component: RegisterComponent }
+  ,
+  { path: 'users', component: ListComponent, canActivate: [AuthGuard] }
+  ,
+  { path: 'users/edit/:id', component: EditComponent }
+
  
 ];
 

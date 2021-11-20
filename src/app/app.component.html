@@ -1,10 +1,41 @@
-<div class="jumbotron p-4">
-    <div class="container text-center">
-        <alert></alert>
-        <router-outlet></router-outlet>
+<nav class="navbar navbar-expand navbar-dark bg-primary">
+    <a href="#" class="navbar-brand">AlikonWeb</a>
+        <ul class="navbar-nav ml-auto" *ngIf="!user">
+          <li class="nav-item">
+            <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link" routerLink="login">Login</a>
+          </li>
+        </ul>
+    
+        <ul class="navbar-nav ml-auto" *ngIf="user">
+          <li class="nav-item">
+            <a href="#" class="navbar-brand bg-primary"> {{ user.data[0].username }}</a>
+            <!--<a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>-->
+          </li>
+          <li class="nav-item">
+            <a href class="nav-link" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
+      
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <app-menu></app-menu>
+        </div>
+        <div class="col-10">
+            <div class="jumbotron p-4">
+                <div class="container text-center">
+                    <alert></alert>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div *ngIf="debug">
-    debug on
+    debug on  {{ currentUrl }}
     <app-messages></app-messages>
 </div>

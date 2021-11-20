@@ -1,8 +1,9 @@
-<app-menu></app-menu>
+
 <h2>User Detail</h2>
-<div class="detail" *ngIf="!showSpinner && user; else loading">
-  <img class="avatar" [src]="user.attributes.mediafielduser">
-  <div class="info">
+<div class="detail" *ngIf="!showSpinner; else loading">
+  
+  <div *ngIf="user" class="info">
+    <img class="avatar" [src]="user.attributes.mediafielduser">
     <h4 class="title">User: {{ user.attributes.username}}</h4>
     <h4 class="title">Name: {{user.attributes.name}}</h4>
     <p class="description">

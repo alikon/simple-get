@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-juser-detail',
@@ -17,7 +18,8 @@ export class JuserDetailComponent implements OnInit {
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,8 @@ export class JuserDetailComponent implements OnInit {
       console.log(this.user.attributes);
     }, (err: any) => {
       console.log(err);
+      this.alertService.error(err.error.message);
+      this.showSpinner = false;
     });
   }
 
